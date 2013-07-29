@@ -1,6 +1,8 @@
 # encoding: utf-8
 
 class Product < ActiveRecord::Base
+  has_many :line_items
+
   attr_accessible :description, :image_url, :price, :title
 
   validates :title, :description, :image_url, presence: true
