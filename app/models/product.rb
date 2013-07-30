@@ -3,6 +3,17 @@
 class Product < ActiveRecord::Base
   has_many :line_items
 
+  before_destroy :ensure_not_referenced_by_any_line_item
+
+  def ensure_not_referenced_by_any_line_item
+  	if line_items.empty?
+  		return true
+  	else
+  		erros.add(:base, '品目が存在します')
+  		return false
+  	end
+  end
+
   attr_accessible :description, :image_url, :price, :title
 
   validates :title, :description, :image_url, presence: true
