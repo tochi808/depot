@@ -5,10 +5,8 @@
 <h1> Pragmaticカタログ</h1>
 
 
-<!--<%= Cart.find(session[:cart_id]).id %> -->
-<!-- <%= li = LineItem.where(:cart_id => 15) %> -->
 
-<!--<%= li = LineItem.find(2).product.title %> -->
+
 <%= "カートの中の商品の数は #{Cart.find(15).line_items.count}個です。" %>
 
 <% @products.each do |product| %>
